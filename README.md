@@ -9,7 +9,20 @@ Basic Terraform to configure LCloud's IAM Roles for the Google Cloud Platfrorm (
 module "lcloud_roles" {
   source = "git@git.lcloud.pl:mgmt/gcp-iam/cross-project-iam-roles.git"
 
-  environment = "staging"
+  audit_members = [
+    "group:some-group@lcloud.pl",
+    "user:xxx.yyy@lcloud.pl"
+  ]
+  audit_additional_roles = [
+    "roles/cloudsql.viewer",
+    "roles/container.clusterViewer",
+    "roles/container.viewer",
+    "roles/logging.viewer"
+  ]
+
+  noc_members = []
+  admin_members = []
+  kernel_members = []
 }
 ```
 
