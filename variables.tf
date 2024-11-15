@@ -49,8 +49,3 @@ variable "noc_additional_roles" {
   type        = list(string)
   default     = []
 }
-
-variable "environment" {
-  description = "Environment name."
-  type        = string
-}
