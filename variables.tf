@@ -26,6 +26,21 @@ variable "audit_additional_roles" {
   default     = []
 }
 
+variable "iam_bot_roles" {
+  description = "List of roles granted to the IAM bot."
+  type        = list(string)
+  default     = [
+    "roles/iam.securityReviewer",
+    "roles/resourcemanager.projectIamAdmin",
+  ]
+}
+
+variable "iam_bot_sa" {
+  description = "Email of IAM Bot Service Account managing granted permissions."
+  type        = string
+  default     = "serviceAccount:lcloud-iam-bot@lcloud-iam-bot.iam.gserviceaccount.com"
+}
+
 variable "kernel_members" {
   description = "List of members for which Kernel permissions will be assigned."
   type        = list(string)

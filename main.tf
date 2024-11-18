@@ -3,6 +3,15 @@
  * https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam
  */
 
+# IAM Bot Permissions
+resource "google_project_iam_member" "iam_bot" {
+  for_each = var.iam_bot_roles != "" ? toset(var.iam_bot_roles) : []
+
+  project = data.google_project.project.project_id
+  role    = each.key
+  member  = var.iam_bot_sa
+}
+
 # Audit Role
 resource "google_project_iam_custom_role" "audit" {
   for_each = local.permissions_audit
