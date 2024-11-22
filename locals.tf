@@ -55,7 +55,7 @@ locals {
 
   _admin_members = flatten([
     for am in var.admin_members : [
-      for ar, _ in local.permissions_noc : {
+      for ar, _ in local.permissions_admin : {
         principal = am
         role      = ar
         type      = "custom"
@@ -79,7 +79,7 @@ locals {
 
   _kernel_members = flatten([
     for am in var.kernel_members : [
-      for ar, _ in local.permissions_noc : {
+      for ar, _ in local.permissions_kernel : {
         principal = am
         role      = ar
         type      = "custom"
