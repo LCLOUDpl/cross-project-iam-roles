@@ -18,7 +18,14 @@ variable "admin_additional_roles" {
       expression  = string
     })), [])
   }))
-  default     = []
+  default     = [
+    { name = "roles/compute.networkAdmin" },
+    { name = "roles/compute.storageAdmin" },
+    { name = "roles/container.admin" },
+    { name = "roles/iam.serviceAccountTokenCreator" },
+    { name = "roles/secretmanager.secretVersionManager" },
+    { name = "roles/storage.admin" },
+  ]
 }
 
 variable "audit_members" {
@@ -97,5 +104,14 @@ variable "noc_additional_roles" {
       expression  = string
     })), [])
   }))
-  default     = []
+  default     = [
+    { name = "roles/cloudsql.admin" },
+    { name = "roles/compute.admin" },
+    { name = "roles/compute.loadBalancerAdmin" },
+    { name = "roles/container.developer" },
+    { name = "roles/iap.tunnelResourceAccessor" },
+    { name = "roles/logging.admin" },
+    { name = "roles/monitoring.admin" },
+    { name = "roles/storage.objectAdmin" },
+  ]
 }
