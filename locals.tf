@@ -5,6 +5,10 @@
 locals {
   prefix = "LCloud"
 
+  api_list = [
+    "cloudresourcemanager.googleapis.com"
+  ]
+
   _audit_members = flatten([
     for am in var.audit_members : [
       for ar, _ in local.permissions_audit : {

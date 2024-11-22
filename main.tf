@@ -3,6 +3,14 @@
  * https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam
  */
 
+resource "google_project_service" "this" {
+  for_each = toset(local.api_list)
+
+  project            = data.google_project.project.project_id
+  service            = each.value
+  disable_on_destroy = false
+}
+
 # IAM Bot Permissions
 resource "google_project_iam_member" "iam_bot" {
   for_each = var.iam_bot_sa != "" ? { for r in var.iam_bot_roles : r.name => r } : tomap({})
