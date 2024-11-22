@@ -5,11 +5,20 @@
 
 # IAM Bot Permissions
 resource "google_project_iam_member" "iam_bot" {
-  for_each = var.iam_bot_roles != "" ? toset(var.iam_bot_roles) : []
+  for_each = var.iam_bot_sa != "" ? { for r in var.iam_bot_roles : r.name => r } : tomap({})
 
   project = data.google_project.project.project_id
-  role    = each.key
+  role    = each.value.name
   member  = var.iam_bot_sa
+
+  dynamic "condition" {
+    for_each = lookup(each.value, "condition", [])
+    content {
+      title = condition.value["title"]
+      description = lookup(condition.value, "description", null)
+      expression = condition.value["expression"]
+    }
+  }
 }
 
 # Audit Role
@@ -31,6 +40,15 @@ resource "google_project_iam_member" "audit" {
   project = data.google_project.project.project_id
   role    = each.value.type == "custom" ? google_project_iam_custom_role.audit[each.value.role].id : each.value.role
   member  = each.value.principal
+
+  dynamic "condition" {
+    for_each = lookup(each.value, "condition", [])
+    content {
+      title = condition.value["title"]
+      description = lookup(condition.value, "description", null)
+      expression = condition.value["expression"]
+    }
+  }
 }
 
 # NOC Role
@@ -52,6 +70,15 @@ resource "google_project_iam_member" "noc" {
   project = data.google_project.project.project_id
   role    = each.value.type == "custom" ? google_project_iam_custom_role.noc[each.value.role].id : each.value.role
   member  = each.value.principal
+
+  dynamic "condition" {
+    for_each = lookup(each.value, "condition", [])
+    content {
+      title = condition.value["title"]
+      description = lookup(condition.value, "description", null)
+      expression = condition.value["expression"]
+    }
+  }
 }
 
 # Admin Role
@@ -73,6 +100,15 @@ resource "google_project_iam_member" "admin" {
   project = data.google_project.project.project_id
   role    = each.value.type == "custom" ? google_project_iam_custom_role.admin[each.value.role].id : each.value.role
   member  = each.value.principal
+
+  dynamic "condition" {
+    for_each = lookup(each.value, "condition", [])
+    content {
+      title = condition.value["title"]
+      description = lookup(condition.value, "description", null)
+      expression = condition.value["expression"]
+    }
+  }
 }
 
 # Kernel Role
@@ -94,4 +130,13 @@ resource "google_project_iam_member" "kernel" {
   project = data.google_project.project.project_id
   role    = each.value.type == "custom" ? google_project_iam_custom_role.kernel[each.value.role].id : each.value.role
   member  = each.value.principal
+
+  dynamic "condition" {
+    for_each = lookup(each.value, "condition", [])
+    content {
+      title = condition.value["title"]
+      description = lookup(condition.value, "description", null)
+      expression = condition.value["expression"]
+    }
+  }
 }

@@ -18,8 +18,9 @@ locals {
     for am in var.audit_members : [
       for ar in var.audit_additional_roles : {
         principal = am
-        role      = ar
+        role      = ar.name
         type      = "additional"
+        condition = lookup(ar, "condition", [])
       }
     ]
   ])
@@ -41,8 +42,9 @@ locals {
     for am in var.noc_members : [
       for ar in var.noc_additional_roles : {
         principal = am
-        role      = ar
+        role      = ar.name
         type      = "additional"
+        condition = lookup(ar, "condition", [])
       }
     ]
   ])
@@ -64,8 +66,9 @@ locals {
     for am in var.admin_members : [
       for ar in var.admin_additional_roles : {
         principal = am
-        role      = ar
+        role      = ar.name
         type      = "additional"
+        condition = lookup(ar, "condition", [])
       }
     ]
   ])
@@ -87,8 +90,9 @@ locals {
     for am in var.kernel_members : [
       for ar in var.kernel_additional_roles : {
         principal = am
-        role      = ar
+        role      = ar.name
         type      = "additional"
+        condition = lookup(ar, "condition", [])
       }
     ]
   ])

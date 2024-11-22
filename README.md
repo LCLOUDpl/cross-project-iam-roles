@@ -14,10 +14,19 @@ module "lcloud_roles" {
     "user:xxx.yyy@lcloud.pl"
   ]
   audit_additional_roles = [
-    "roles/cloudsql.viewer",
-    "roles/container.clusterViewer",
-    "roles/container.viewer",
-    "roles/logging.viewer"
+    { name = "roles/cloudsql.viewer" },
+    {
+      name = "roles/container.clusterViewer"
+      condition = [
+        {
+          title = "limitedAccess"
+          description = "Access only Dev resources"
+          expression = "resource.name.startsWith(\"dev\")"
+        }
+      ]
+    },
+    { name = "roles/container.viewer" },
+    { name = "roles/logging.viewer" }
   ]
 
   noc_members = []

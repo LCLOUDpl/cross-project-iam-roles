@@ -10,7 +10,14 @@ variable "admin_members" {
 
 variable "admin_additional_roles" {
   description = "List of additional permissions which will be assigned to admin_members."
-  type        = list(string)
+  type        = list(object({
+    name      = string
+    condition = optional(list(object({
+      title       = string
+      description = optional(string)
+      expression  = string
+    })), [])
+  }))
   default     = []
 }
 
@@ -22,16 +29,30 @@ variable "audit_members" {
 
 variable "audit_additional_roles" {
   description = "List of additional permissions which will be assigned to audit_members."
-  type        = list(string)
+  type        = list(object({
+    name      = string
+    condition = optional(list(object({
+      title       = string
+      description = optional(string)
+      expression  = string
+    })), [])
+  }))
   default     = []
 }
 
 variable "iam_bot_roles" {
   description = "List of roles granted to the IAM bot."
-  type        = list(string)
+  type        = list(object({
+    name      = string
+    condition = optional(list(object({
+      title       = string
+      description = optional(string)
+      expression  = string
+    })), [])
+  }))
   default     = [
-    "roles/iam.securityReviewer",
-    "roles/resourcemanager.projectIamAdmin",
+    { name = "roles/iam.securityReviewer" },
+    { name = "roles/resourcemanager.projectIamAdmin" },
   ]
 }
 
@@ -49,7 +70,14 @@ variable "kernel_members" {
 
 variable "kernel_additional_roles" {
   description = "List of additional permissions which will be assigned to kernel_members."
-  type        = list(string)
+  type        = list(object({
+    name      = string
+    condition = optional(list(object({
+      title       = string
+      description = optional(string)
+      expression  = string
+    })), [])
+  }))
   default     = []
 }
 
@@ -61,6 +89,13 @@ variable "noc_members" {
 
 variable "noc_additional_roles" {
   description = "List of additional permissions which will be assigned to noc_members."
-  type        = list(string)
+  type        = list(object({
+    name      = string
+    condition = optional(list(object({
+      title       = string
+      description = optional(string)
+      expression  = string
+    })), [])
+  }))
   default     = []
 }
