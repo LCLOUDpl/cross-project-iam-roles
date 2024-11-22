@@ -58,7 +58,6 @@ variable "iam_bot_roles" {
     })), [])
   }))
   default     = [
-    { name = "roles/iam.securityReviewer" },
     { name = "roles/resourcemanager.projectIamAdmin" },
   ]
 }
