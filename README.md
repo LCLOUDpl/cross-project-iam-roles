@@ -41,14 +41,14 @@ module "lcloud_roles" {
 | Name | Version |
 |------|---------|
 | terraform | >= 1.0 |
-| google | >= 4.83.0 |
+| google | >= 6.12.0 |
 
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| google | >= 4.83.0 |
+| google | >= 6.12.0 |
 
 
 ## Modules
