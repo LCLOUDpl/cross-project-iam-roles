@@ -7,7 +7,7 @@ Basic Terraform to configure LCloud's IAM Roles for the Google Cloud Platfrorm (
 
 ```hcl
 module "lcloud_roles" {
-  source = "git@git.lcloud.pl:mgmt/gcp-iam/cross-project-iam-roles.git"
+  source = "git@github.com:LCLOUDpl/cross-project-iam-roles.git"
 
   audit_members = [
     "group:some-group@lcloud.pl",
@@ -61,13 +61,15 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | `audit_members` | List of members for which Audit (read-only) permissions will be assigned. | `list(string)` | `["group:lcloud-gcp-audit@lcloud.pl"]` | no |
-| `audit_additional_roles` | List of additional permissions which will be assigned to audit_members. | `list(string)` | `[]` | no |
+| `audit_additional_roles` | List of additional permissions which will be assigned to audit_members. | <pre>list(object({&#13;  name      = string&#13;  condition = optional(list(object({&#13;    title       = string&#13;    description = optional(string)&#13;    expression  = string&#13;  })), [])&#13;}))</pre> | `[]` | no |
 | `noc_members` | List of members for which NOC (read-only) permissions will be assigned. | `list(string)` | `["group:lcloud-gcp-noc@lcloud.pl"]` | no |
-| `noc_additional_roles` | List of additional permissions which will be assigned to noc_members. | `list(string)` | `[]` | no |
+| `noc_additional_roles` | List of additional permissions which will be assigned to noc_members. | <pre>list(object({&#13;  name      = string&#13;  condition = optional(list(object({&#13;    title       = string&#13;    description = optional(string)&#13;    expression  = string&#13;  })), [])&#13;}))</pre> | `[{ name = "roles/cloudsql.admin" }, { name = "roles/compute.admin" }, { name = "roles/compute.loadBalancerAdmin" }, { name = "roles/container.developer" }, { name = "roles/iap.tunnelResourceAccessor" }, { name = "roles/logging.admin" }, { name = "roles/monitoring.admin" }, { name = "roles/storage.objectAdmin" }]` | no |
 | `admin_members` | List of members for which admin permissions will be assigned. | `list(string)` | `["group:lcloud-gcp-admin@lcloud.pl"]` | no |
-| `admin_additional_roles` | List of additional permissions which will be assigned to admin_members. | `list(string)` | `[]` | no |
-| `kernel_members` | List of members for which Kernel permissions will be assigned. | `list(string)` | `["group:lcloud-gcp-kernel@lcloud.pl"]` | no |
+| `admin_additional_roles` | List of additional permissions which will be assigned to admin_members. | <pre>list(object({&#13;  name      = string&#13;  condition = optional(list(object({&#13;    title       = string&#13;    description = optional(string)&#13;    expression  = string&#13;  })), [])&#13;}))</pre> | `[{ name = "roles/compute.networkAdmin" }, { name = "roles/compute.storageAdmin" }, { name = "roles/container.admin" }, { name = "roles/iam.serviceAccountTokenCreator" }, { name = "roles/secretmanager.secretVersionManager" }, { name = "roles/storage.admin" }]` | no |
+| `kernel_members` | List of members for which Kernel permissions will be assigned. | <pre>list(object({&#13;  name      = string&#13;  condition = optional(list(object({&#13;    title       = string&#13;    description = optional(string)&#13;    expression  = string&#13;  })), [])&#13;}))</pre> | `["group:lcloud-gcp-kernel@lcloud.pl"]` | no |
 | `kernel_additional_roles` | List of additional permissions which will be assigned to kernel_members. | `list(string)` | `[]` | no |
+| `iam_bot_sa` | Email of IAM Bot Service Account managing granted permissions. | `string` | `serviceAccount:lcloud-iam-bot@lcloud-iam-bot.iam.gserviceaccount.com` | no |
+| `iam_bot_roles` | List of roles granted to the IAM bot. | <pre>list(object({&#13;  name      = string&#13;  condition = optional(list(object({&#13;    title       = string&#13;    description = optional(string)&#13;    expression  = string&#13;  })), [])&#13;}))</pre> | `[{ name = "roles/resourcemanager.projectIamAdmin" },]` | no |
 
 
 ## Outputs
