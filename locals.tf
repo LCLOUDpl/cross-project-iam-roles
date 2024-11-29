@@ -13,7 +13,8 @@ locals {
     for am in var.audit_members : [
       for ar, _ in local.permissions_audit : {
         principal = am
-        role      = ar
+        role_name = ar
+        role_id   = "roles/${lower(local.prefix)}Audit${title(ar)}"
         type      = "custom"
       }
     ]
@@ -22,7 +23,8 @@ locals {
     for am in var.audit_members : [
       for ar in var.audit_additional_roles : {
         principal = am
-        role      = ar.name
+        role_name = ar.name
+        role_id   = ar.name
         type      = "additional"
         condition = lookup(ar, "condition", [])
       }
@@ -37,7 +39,8 @@ locals {
     for am in var.noc_members : [
       for ar, _ in local.permissions_noc : {
         principal = am
-        role      = ar
+        role_name = ar
+        role_id   = "roles/${lower(local.prefix)}Noc${title(ar)}"
         type      = "custom"
       }
     ]
@@ -46,7 +49,8 @@ locals {
     for am in var.noc_members : [
       for ar in var.noc_additional_roles : {
         principal = am
-        role      = ar.name
+        role_name = ar.name
+        role_id   = ar.name
         type      = "additional"
         condition = lookup(ar, "condition", [])
       }
@@ -61,7 +65,8 @@ locals {
     for am in var.admin_members : [
       for ar, _ in local.permissions_admin : {
         principal = am
-        role      = ar
+        role_name = ar
+        role_id   = "roles/${lower(local.prefix)}Admin${title(ar)}"
         type      = "custom"
       }
     ]
@@ -70,7 +75,8 @@ locals {
     for am in var.admin_members : [
       for ar in var.admin_additional_roles : {
         principal = am
-        role      = ar.name
+        role_name = ar.name
+        role_id   = ar.name
         type      = "additional"
         condition = lookup(ar, "condition", [])
       }
@@ -85,7 +91,8 @@ locals {
     for am in var.kernel_members : [
       for ar, _ in local.permissions_kernel : {
         principal = am
-        role      = ar
+        role_name = ar
+        role_id   = "roles/${lower(local.prefix)}Kernel${title(ar)}"
         type      = "custom"
       }
     ]
@@ -94,7 +101,8 @@ locals {
     for am in var.kernel_members : [
       for ar in var.kernel_additional_roles : {
         principal = am
-        role      = ar.name
+        role_name = ar.name
+        role_id   = ar.name
         type      = "additional"
         condition = lookup(ar, "condition", [])
       }

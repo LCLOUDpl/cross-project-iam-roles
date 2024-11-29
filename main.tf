@@ -43,10 +43,10 @@ resource "google_project_iam_custom_role" "audit" {
 }
 
 resource "google_project_iam_member" "audit" {
-  for_each = { for am in local.audit_members : "${am.principal}:${am.role}" => am }
+  for_each = { for am in local.audit_members : "${am.principal}:${am.role_name}" => am }
 
   project = data.google_project.project.project_id
-  role    = each.value.type == "custom" ? google_project_iam_custom_role.audit[each.value.role].id : each.value.role
+  role    = each.value.type == "custom" ? "projects/${data.google_project.project.project_id}/${each.value.role_id}" : each.value.role_id
   member  = each.value.principal
 
   dynamic "condition" {
@@ -57,6 +57,8 @@ resource "google_project_iam_member" "audit" {
       expression = condition.value["expression"]
     }
   }
+
+  depends_on = [google_project_iam_custom_role.audit]
 }
 
 # NOC Role
@@ -73,10 +75,10 @@ resource "google_project_iam_custom_role" "noc" {
 }
 
 resource "google_project_iam_member" "noc" {
-  for_each = { for am in local.noc_members : "${am.principal}:${am.role}" => am }
+  for_each = { for am in local.noc_members : "${am.principal}:${am.role_name}" => am }
 
   project = data.google_project.project.project_id
-  role    = each.value.type == "custom" ? google_project_iam_custom_role.noc[each.value.role].id : each.value.role
+  role    = each.value.type == "custom" ? "projects/${data.google_project.project.project_id}/${each.value.role_id}" : each.value.role_id
   member  = each.value.principal
 
   dynamic "condition" {
@@ -87,6 +89,8 @@ resource "google_project_iam_member" "noc" {
       expression = condition.value["expression"]
     }
   }
+
+  depends_on = [google_project_iam_custom_role.noc]
 }
 
 # Admin Role
@@ -103,10 +107,10 @@ resource "google_project_iam_custom_role" "admin" {
 }
 
 resource "google_project_iam_member" "admin" {
-  for_each = { for am in local.admin_members : "${am.principal}:${am.role}" => am }
+  for_each = { for am in local.admin_members : "${am.principal}:${am.role_name}" => am }
 
   project = data.google_project.project.project_id
-  role    = each.value.type == "custom" ? google_project_iam_custom_role.admin[each.value.role].id : each.value.role
+  role    = each.value.type == "custom" ? "projects/${data.google_project.project.project_id}/${each.value.role_id}" : each.value.role_id
   member  = each.value.principal
 
   dynamic "condition" {
@@ -117,6 +121,8 @@ resource "google_project_iam_member" "admin" {
       expression = condition.value["expression"]
     }
   }
+
+  depends_on = [google_project_iam_custom_role.admin]
 }
 
 # Kernel Role
@@ -133,10 +139,10 @@ resource "google_project_iam_custom_role" "kernel" {
 }
 
 resource "google_project_iam_member" "kernel" {
-  for_each = { for am in local.kernel_members : "${am.principal}:${am.role}" => am }
+  for_each = { for am in local.kernel_members : "${am.principal}:${am.role_name}" => am }
 
   project = data.google_project.project.project_id
-  role    = each.value.type == "custom" ? google_project_iam_custom_role.kernel[each.value.role].id : each.value.role
+  role    = each.value.type == "custom" ? "projects/${data.google_project.project.project_id}/${each.value.role_id}" : each.value.role_id
   member  = each.value.principal
 
   dynamic "condition" {
@@ -147,4 +153,6 @@ resource "google_project_iam_member" "kernel" {
       expression = condition.value["expression"]
     }
   }
+
+  depends_on = [google_project_iam_custom_role.kernel]
 }
