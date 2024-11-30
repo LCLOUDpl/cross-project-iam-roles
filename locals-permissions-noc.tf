@@ -4,8 +4,8 @@
 
 locals {
   permissions_noc = {
-    computeAdmin = {
-      description = "Access and administer compute, load balancers and gke resources"
+    computeManager = {
+      description = "Access and manage compute, load balancers and gke resources"
       permissions = [
         # roles/compute.admin
         "backupdr.backupPlanAssociations.createForComputeInstance",
@@ -1305,8 +1305,8 @@ locals {
       ]
     }
 
-    databaseAndStorageAdmin = {
-      description = "Access and administer database and storage resources"
+    databaseAndStorageManager = {
+      description = "Access and manage database resources and storage objects"
       permissions = [
         # roles/cloudsql.admin
         "cloudaicompanion.entitlements.get",
@@ -1443,8 +1443,8 @@ locals {
       ]
     }
 
-    monitoringAdmin = {
-      description = "Access and administer Monitoring and Logging resources"
+    monitoringManager = {
+      description = "Access and manage Monitoring and Logging resources"
       permissions = [
         # roles/monitoring.admin
         "cloudnotifications.activities.list",
