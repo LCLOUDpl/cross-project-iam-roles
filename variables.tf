@@ -103,14 +103,5 @@ variable "noc_additional_roles" {
       expression  = string
     })), [])
   }))
-  default     = [
-    { name = "roles/cloudsql.admin" },
-    { name = "roles/compute.admin" },
-    { name = "roles/compute.loadBalancerAdmin" },
-    { name = "roles/container.developer" },
-    { name = "roles/iap.tunnelResourceAccessor" },
-    { name = "roles/logging.admin" },
-    { name = "roles/monitoring.admin" },
-    { name = "roles/storage.objectAdmin" },
-  ]
+  default     = []
 }
