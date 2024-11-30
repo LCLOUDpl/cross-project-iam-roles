@@ -90,7 +90,10 @@ resource "google_project_iam_member" "noc" {
     }
   }
 
-  depends_on = [google_project_iam_custom_role.noc]
+  depends_on = [
+    google_project_iam_custom_role.noc,
+    google_project_iam_custom_role.audit
+  ]
 }
 
 # Admin Role
@@ -122,7 +125,11 @@ resource "google_project_iam_member" "admin" {
     }
   }
 
-  depends_on = [google_project_iam_custom_role.admin]
+  depends_on = [
+    google_project_iam_custom_role.admin,
+    google_project_iam_custom_role.noc,
+    google_project_iam_custom_role.audit
+  ]
 }
 
 # Kernel Role
@@ -154,5 +161,10 @@ resource "google_project_iam_member" "kernel" {
     }
   }
 
-  depends_on = [google_project_iam_custom_role.kernel]
+  depends_on = [
+    google_project_iam_custom_role.kernel,
+    google_project_iam_custom_role.admin,
+    google_project_iam_custom_role.noc,
+    google_project_iam_custom_role.audit
+  ]
 }
