@@ -19,12 +19,8 @@ variable "admin_additional_roles" {
     })), [])
   }))
   default     = [
-    { name = "roles/compute.networkAdmin" },
-    { name = "roles/compute.storageAdmin" },
-    { name = "roles/container.admin" },
     { name = "roles/iam.serviceAccountTokenCreator" },
     { name = "roles/secretmanager.secretVersionManager" },
-    { name = "roles/storage.admin" },
   ]
 }
 
