@@ -7,7 +7,7 @@ Basic Terraform to configure LCloud's IAM Roles for the Google Cloud Platfrorm (
 
 ```hcl
 module "lcloud_roles" {
-  source = "git::https://github.com/LCLOUDpl/cross-project-iam-roles.git?ref=v1.0"
+  source = "git::https://github.com/LCLOUDpl/cross-project-iam-roles.git?ref=v1.1"
 
   # disable iam bot
   iam_bot_sa = ""
