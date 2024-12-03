@@ -1586,6 +1586,17 @@ locals {
       ]
     }
 
+    dnsManager = {
+      description = "Access and manage DNS"
+      permissions = [
+        "dns.managedZones.update",
+        "dns.policies.update",
+        "dns.resourceRecordSets.update",
+        "dns.responsePolicies.update",
+        "dns.responsePolicyRules.update",
+      ]
+    }
+
     # ZZZ = {
     #   description = ""
     #   permissions = []
