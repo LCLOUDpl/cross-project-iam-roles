@@ -5,7 +5,7 @@
 locals {
   permissions_noc = {
     computeManager = {
-      description = "Access and manage compute, load balancers and gke resources"
+      description = "Access and manage compute, load balancers, dns and gke resources"
       permissions = [
         # roles/compute.admin
         "backupdr.backupPlanAssociations.createForComputeInstance",
@@ -1302,6 +1302,12 @@ locals {
         # roles/iap.tunnelResourceAccessor
         "iap.tunnelDestGroups.accessViaIAP",
         "iap.tunnelInstances.accessViaIAP",
+        # excerpt from roles/dns.admin
+        "dns.managedZones.update",
+        "dns.policies.update",
+        "dns.resourceRecordSets.update",
+        "dns.responsePolicies.update",
+        "dns.responsePolicyRules.update",
       ]
     }
 
@@ -1583,17 +1589,6 @@ locals {
         "logging.views.setIamPolicy",
         "logging.views.update",
         "observability.scopes.get",
-      ]
-    }
-
-    dnsManager = {
-      description = "Access and manage DNS"
-      permissions = [
-        "dns.managedZones.update",
-        "dns.policies.update",
-        "dns.resourceRecordSets.update",
-        "dns.responsePolicies.update",
-        "dns.responsePolicyRules.update",
       ]
     }
 

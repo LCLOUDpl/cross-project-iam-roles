@@ -1255,6 +1255,25 @@ locals {
         "recommender.networkAnalyzerGkeIpAddressInsights.get",
         "recommender.networkAnalyzerGkeIpAddressInsights.list",
         "recommender.networkAnalyzerGkeIpAddressInsights.update",
+        # excerpt from roles/dns.admin
+        "dns.changes.create",
+        "dns.gkeClusters.bindDNSResponsePolicy",
+        "dns.gkeClusters.bindPrivateDNSZone",
+        "dns.managedZones.create",
+        "dns.managedZones.delete",
+        "dns.networks.bindDNSResponsePolicy",
+        "dns.networks.bindPrivateDNSPolicy",
+        "dns.networks.bindPrivateDNSZone",
+        "dns.networks.targetWithPeeringZone",
+        "dns.networks.useHealthSignals",
+        "dns.policies.create",
+        "dns.policies.delete",
+        "dns.resourceRecordSets.create",
+        "dns.resourceRecordSets.delete",,
+        "dns.responsePolicies.create",
+        "dns.responsePolicies.delete",
+        "dns.responsePolicyRules.create",
+        "dns.responsePolicyRules.delete",
       ]
     }
 

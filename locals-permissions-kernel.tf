@@ -121,23 +121,6 @@ locals {
       ]
     }
 
-    dnsAdmin = {
-      description = "Access and administer DNS"
-      permissions = [
-        "dns.changes.create",
-        "dns.managedZones.create",
-        "dns.managedZones.delete",
-        "dns.policies.create",
-        "dns.policies.delete",
-        "dns.resourceRecordSets.create",
-        "dns.resourceRecordSets.delete",
-        "dns.responsePolicies.create",
-        "dns.responsePolicies.delete",
-        "dns.responsePolicyRules.create",
-        "dns.responsePolicyRules.delete",
-      ]
-    }
-
     # ZZZ = {
     #   description = ""
     #   permissions = []
