@@ -1269,7 +1269,7 @@ locals {
         "dns.policies.create",
         "dns.policies.delete",
         "dns.resourceRecordSets.create",
-        "dns.resourceRecordSets.delete",,
+        "dns.resourceRecordSets.delete",
         "dns.responsePolicies.create",
         "dns.responsePolicies.delete",
         "dns.responsePolicyRules.create",
