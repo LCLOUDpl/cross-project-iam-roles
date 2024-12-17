@@ -1454,6 +1454,25 @@ locals {
       ]
     }
 
+    satcAndSecrets = {
+      description = "Management permissions for Service Accounts and and Secret Manager secrets"
+      permissions = [
+        "iam.serviceAccounts.get",
+        "iam.serviceAccounts.getAccessToken",
+        "iam.serviceAccounts.getOpenIdToken",
+        "iam.serviceAccounts.implicitDelegation",
+        "iam.serviceAccounts.list",
+        "iam.serviceAccounts.signBlob",
+        "iam.serviceAccounts.signJwt",
+        "secretmanager.versions.add",
+        "secretmanager.versions.destroy",
+        "secretmanager.versions.disable",
+        "secretmanager.versions.enable",
+        "secretmanager.versions.get",
+        "secretmanager.versions.list",
+      ]
+    }
+
     # ZZZ = {
     #   description = ""
     #   permissions = []

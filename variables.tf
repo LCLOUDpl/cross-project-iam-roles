@@ -18,10 +18,7 @@ variable "admin_additional_roles" {
       expression  = string
     })), [])
   }))
-  default     = [
-    { name = "roles/iam.serviceAccountTokenCreator" },
-    { name = "roles/secretmanager.secretVersionManager" },
-  ]
+  default     = []
 }
 
 variable "audit_members" {
@@ -40,7 +37,9 @@ variable "audit_additional_roles" {
       expression  = string
     })), [])
   }))
-  default     = []
+  default     = [
+    { name = "roles/monitoring.cloudConsoleIncidentViewer" },
+  ]
 }
 
 variable "iam_bot_roles" {
@@ -99,5 +98,7 @@ variable "noc_additional_roles" {
       expression  = string
     })), [])
   }))
-  default     = []
+  default     = [
+    { name = "roles/monitoring.cloudConsoleIncidentEditor" },
+  ]
 }
