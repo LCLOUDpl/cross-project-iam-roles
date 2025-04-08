@@ -39,6 +39,17 @@ locals {
         "iam.serviceAccounts.setIamPolicy",
         "iam.serviceAccounts.undelete",
         "iam.serviceAccounts.update",
+        # roles/iam.serviceAccountKeyAdmin
+        "iam.serviceAccountKeys.create",
+        "iam.serviceAccountKeys.delete",
+        "iam.serviceAccountKeys.disable",
+        "iam.serviceAccountKeys.enable",
+        "iam.serviceAccountKeys.get",
+        "iam.serviceAccountKeys.list",
+        "iam.serviceAccounts.get",
+        "iam.serviceAccounts.list",
+        "resourcemanager.projects.get",
+        "resourcemanager.projects.list",
       ]
     }
 
