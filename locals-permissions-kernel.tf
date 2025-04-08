@@ -48,8 +48,6 @@ locals {
         "iam.serviceAccountKeys.list",
         "iam.serviceAccounts.get",
         "iam.serviceAccounts.list",
-        "resourcemanager.projects.get",
-        "resourcemanager.projects.list",
       ]
     }
 
