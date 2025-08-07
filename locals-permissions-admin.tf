@@ -1464,6 +1464,7 @@ locals {
         "iam.serviceAccounts.list",
         "iam.serviceAccounts.signBlob",
         "iam.serviceAccounts.signJwt",
+        "secretmanager.versions.access",
         "secretmanager.versions.add",
         "secretmanager.versions.destroy",
         "secretmanager.versions.disable",
