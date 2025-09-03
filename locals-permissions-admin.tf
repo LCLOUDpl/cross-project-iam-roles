@@ -1457,6 +1457,7 @@ locals {
     satcAndSecrets = {
       description = "Management permissions for Service Accounts and and Secret Manager secrets"
       permissions = [
+        # roles/iam.serviceAccountTokenCreator
         "iam.serviceAccounts.get",
         "iam.serviceAccounts.getAccessToken",
         "iam.serviceAccounts.getOpenIdToken",
@@ -1464,6 +1465,7 @@ locals {
         "iam.serviceAccounts.list",
         "iam.serviceAccounts.signBlob",
         "iam.serviceAccounts.signJwt",
+        # roles/secretmanager.secretVersionManager
         "secretmanager.versions.access",
         "secretmanager.versions.add",
         "secretmanager.versions.destroy",
