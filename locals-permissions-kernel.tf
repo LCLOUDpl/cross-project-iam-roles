@@ -39,6 +39,8 @@ locals {
         "iam.serviceAccounts.setIamPolicy",
         "iam.serviceAccounts.undelete",
         "iam.serviceAccounts.update",
+        # roles/iam.serviceAccountUser
+        "iam.serviceAccounts.actAs",
         # roles/iam.serviceAccountKeyAdmin
         "iam.serviceAccountKeys.create",
         "iam.serviceAccountKeys.delete",
@@ -46,8 +48,6 @@ locals {
         "iam.serviceAccountKeys.enable",
         "iam.serviceAccountKeys.get",
         "iam.serviceAccountKeys.list",
-        "iam.serviceAccounts.get",
-        "iam.serviceAccounts.list",
       ]
     }
 
