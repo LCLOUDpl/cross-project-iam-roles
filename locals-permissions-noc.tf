@@ -1477,6 +1477,17 @@ locals {
         "storage.objects.setIamPolicy",
         "storage.objects.setRetention",
         "storage.objects.update",
+        # roles/redis.editor
+        "redis.backupCollections.get",
+        "redis.backupCollections.list",
+        "redis.backups.get",
+        "redis.backups.list",
+        "redis.clusters.backup",
+        "redis.clusters.update",
+        "redis.instances.failover",
+        "redis.instances.update",
+        "redis.operations.cancel",
+        "redis.operations.delete",
       ]
     }
 
