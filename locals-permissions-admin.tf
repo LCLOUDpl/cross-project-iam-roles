@@ -822,9 +822,6 @@ locals {
         "servicenetworking.services.enableVpcServiceControls",
         "servicenetworking.services.get",
         "servicenetworking.services.listPeeredDnsDomains",
-        "serviceusage.quotas.get",
-        "serviceusage.services.get",
-        "serviceusage.services.list",
         "trafficdirector.networks.getConfigs",
         "trafficdirector.networks.reportMetrics",
         # roles/container.admin
@@ -1381,9 +1378,6 @@ locals {
         "compute.zones.get",
         "compute.zones.list",
         "resourcemanager.projects.get",
-        "serviceusage.quotas.get",
-        "serviceusage.services.get",
-        "serviceusage.services.list",
         # roles/storage.admin
         "firebase.projects.get",
         "orgpolicy.policy.get",

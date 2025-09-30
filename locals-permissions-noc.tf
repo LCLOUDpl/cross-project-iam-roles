@@ -901,9 +901,8 @@ locals {
         "compute.zones.get",
         "compute.zones.list",
         "resourcemanager.projects.get",
-        "serviceusage.quotas.get",
-        "serviceusage.services.get",
-        "serviceusage.services.list",
+        # roles/serviceusage.serviceUsageConsumer
+        "serviceusage.services.use",
         # roles/compute.loadBalancerAdmin
         "certificatemanager.certmaps.get",
         "certificatemanager.certmaps.list",
@@ -1553,7 +1552,6 @@ locals {
         "opsconfigmonitoring.resourceMetadata.write",
         "resourcemanager.projects.get",
         "serviceusage.services.enable",
-        "serviceusage.services.get",
         "stackdriver.projects.get",
         "stackdriver.resourceMetadata.list",
         "stackdriver.resourceMetadata.write",
