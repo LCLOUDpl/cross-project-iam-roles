@@ -1338,6 +1338,26 @@ locals {
         "pubsub.topics.publish",
         "pubsub.topics.update",
         "pubsub.topics.updateTag",
+        # roles/osconfig.admin
+        "osconfig.guestPolicies.create",
+        "osconfig.guestPolicies.delete",
+        "osconfig.guestPolicies.update",
+        "osconfig.operations.cancel",
+        "osconfig.operations.delete",
+        "osconfig.osPolicyAssignments.create",
+        "osconfig.osPolicyAssignments.delete",
+        "osconfig.osPolicyAssignments.update",
+        "osconfig.patchDeployments.create",
+        "osconfig.patchDeployments.delete",
+        "osconfig.patchDeployments.execute",
+        "osconfig.patchDeployments.pause",
+        "osconfig.patchDeployments.resume",
+        "osconfig.patchDeployments.update",
+        "osconfig.patchJobs.exec",
+        "osconfig.policyOrchestrators.create",
+        "osconfig.policyOrchestrators.delete",
+        "osconfig.policyOrchestrators.update",
+        "osconfig.projectFeatureSettings.update",
       ]
     }
 
